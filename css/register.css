@@ -277,16 +277,57 @@ input:-webkit-autofill:focus{
 
 }
 
+
+/*==============================
+Error Message
+==============================*/
+
 .error{
+
     display:block;
+
     color:#ff4d4d;
+
     font-size:13px;
-    margin-top:5px;
+
+    margin-top:6px;
+
+    font-weight:500;
+
 }
 
-/* Error Border */
+/*==============================
+Input Error
+==============================*/
+
+
+
+
+
+
+
+.input{
+
+    transition:.3s;
+
+}
 
 .input.error{
-    border:1px solid #ff3b3b;
+
+    border:1px solid #ff4d4d;
+
+    box-shadow:0 0 10px rgba(255,77,77,.3);
+
 }
 
+/*==============================
+Input Focus
+==============================*/
+
+.input:focus-within{
+
+    border:1px solid #2ea8ff;
+
+    box-shadow:0 0 12px rgba(46,168,255,.4);
+
+}

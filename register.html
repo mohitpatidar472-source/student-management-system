@@ -17,239 +17,258 @@
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <div class="register-card">
+<div class="register-card">
 
-            <div class="logo">
-                <img src="image/download (4).jpg" class="logo-form" alt="Logo">
-            </div>
+<div class="logo">
+    <img src="image/download (4).jpg" class="logo-form" alt="Logo">
+</div>
 
-            <h2>Create Account</h2>
+<h2>Create Account</h2>
 
-            <p>Student Management System</p>
+<p>Student Management System</p>
 
-            <form id="registerForm" method="POST" enctype="multipart/form-data" autocomplete="off">
+<form id="registerForm"
+      action=""
+      method="POST"
+      enctype="multipart/form-data"
+      autocomplete="off">
 
-                <!-- Name & Email -->
-                <div class="row">
+<!--==========================
+Name & Email
+===========================-->
 
-                    <div class="input-box">
+<div class="row">
 
-                        <label for="name" >Full Name</label>
+<div class="input-box">
 
-                        <div class="input">
-                            <i class="fa-solid fa-user"></i>
+<label for="name">Full Name</label>
 
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="Enter Full Name"
-                                autocomplete="off">
+<div class="input">
 
-                        </div>
+<i class="fa-solid fa-user"></i>
 
-                        <span class="error" id="nameError"></span>
+<input
+type="text"
+id="name"
+name="name"
+placeholder="Enter Full Name"
+autocomplete="off">
 
-                    </div>
+</div>
 
-                    <div class="input-box">
+<span class="error" id="nameError"></span>
 
-                        <label>Email</label>
+</div>
 
-                        <div class="input">
+<div class="input-box">
 
-                            <i class="fa-solid fa-envelope"></i>
+<label for="email">Email Address</label>
 
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Enter Email"
-                                autocomplete="off">
+<div class="input">
 
-                        </div>
+<i class="fa-solid fa-envelope"></i>
 
-                        <span class="error" id="emailError"></span>
+<input
+type="email"
+id="email"
+name="email"
+placeholder="Enter Email"
+autocomplete="off">
 
-                    </div>
+</div>
 
-                </div>
+<span class="error" id="emailError"></span>
 
-                <!-- Mobile & Course -->
+</div>
 
-                <div class="row">
+</div>
 
-                    <div class="input-box">
+<!--==========================
+Mobile & Course
+===========================-->
 
-                        <label>Mobile Number</label>
+<div class="row">
 
-                        <div class="input">
+<div class="input-box">
 
-                            <i class="fa-solid fa-phone"></i>
+<label for="mobile">Mobile Number</label>
 
-                            <input
-                                type="text"
-                                id="mobile"
-                                name="mobile"
-                                placeholder="Enter Mobile Number"
-                                maxlength="10"
-                                autocomplete="off">
+<div class="input">
 
-                        </div>
+<i class="fa-solid fa-phone"></i>
 
-                        <span class="error" id="mobileError"></span>
+<input
+type="text"
+id="mobile"
+name="mobile"
+maxlength="10"
+placeholder="Enter Mobile Number"
+autocomplete="off">
 
-                    </div>
+</div>
 
-                    <div class="input-box">
+<span class="error" id="mobileError"></span>
 
-                        <label>Course</label>
+</div>
 
-                        <div class="input">
+<div class="input-box">
 
-                            <i class="fa-solid fa-graduation-cap"></i>
+<label for="course">Course</label>
 
-                            <select id="course" name="course">
+<div class="input">
 
-                                <option value="">Select Course</option>
+<i class="fa-solid fa-graduation-cap"></i>
 
-                                <option value="BCA">BCA</option>
+<select id="course" name="course">
 
-                                <option value="BBA">BBA</option>
+<option value="">Select Course</option>
 
-                                <option value="B.Com">B.Com</option>
+<option value="BCA">BCA</option>
 
-                                <option value="B.Sc">B.Sc</option>
+<option value="BBA">BBA</option>
 
-                            </select>
+<option value="B.Com">B.Com</option>
 
-                        </div>
+<option value="B.Sc">B.Sc</option>
 
-                        <span class="error" id="courseError"></span>
+</select>
 
-                    </div>
+</div>
 
-                </div>
+<span class="error" id="courseError"></span>
 
-                <!-- Password -->
+</div>
 
-                <div class="row">
+</div>
 
-                    <div class="input-box">
+<!--==========================
+Password
+===========================-->
 
-                        <label>Password</label>
+<div class="row">
 
-                        <div class="input">
+<div class="input-box">
 
-                            <i class="fa-solid fa-lock"></i>
+<label for="password">Password</label>
 
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="Enter Password"
-                                autocomplete="new-password">
+<div class="input">
 
-                            <i class="fa-solid fa-eye eye"></i>
+<i class="fa-solid fa-lock"></i>
 
-                        </div>
+<input
+type="password"
+id="password"
+name="password"
+placeholder="Enter Password"
+autocomplete="new-password">
 
-                        <span class="error" id="passwordError"></span>
+<i class="fa-solid fa-eye eye"></i>
 
-                    </div>
+</div>
 
-                    <div class="input-box">
+<span class="error" id="passwordError"></span>
 
-                        <label>Confirm Password</label>
+</div>
 
-                        <div class="input">
+<div class="input-box">
 
-                            <i class="fa-solid fa-lock"></i>
+<label for="confirmPassword">Confirm Password</label>
 
-                            <input
-                                type="password"
-                                id="confirmPassword"
-                                name="confirm_password"
-                                placeholder="Confirm Password"
-                                autocomplete="new-password">
+<div class="input">
 
-                            <i class="fa-solid fa-eye eye"></i>
+<i class="fa-solid fa-lock"></i>
 
-                        </div>
+<input
+type="password"
+id="confirmPassword"
+name="confirm_password"
+placeholder="Confirm Password"
+autocomplete="new-password">
 
-                        <span class="error" id="confirmError"></span>
+<i class="fa-solid fa-eye eye"></i>
 
-                    </div>
+</div>
 
-                </div>
+<span class="error" id="confirmError"></span>
 
-                <!-- Image -->
+</div>
 
-                <div class="input-box">
+</div>
 
-                    <label>Profile Photo</label>
+<!--==========================
+Profile Image
+===========================-->
 
-                    <div class="input">
+<div class="input-box">
 
-                        <i class="fa-solid fa-image"></i>
+<label for="image">Profile Photo</label>
 
-                        <input
-                            type="file"
-                            id="image"
-                            name="image"
-                            accept="image/*">
+<div class="input">
 
-                    </div>
+<i class="fa-solid fa-image"></i>
 
-                    <span class="error" id="imageError"></span>
+<input
+type="file"
+id="image"
+name="image"
+accept=".jpg,.jpeg,.png">
 
-                </div>
+</div>
 
-                <!-- Terms -->
+<span class="error" id="imageError"></span>
 
-                <div class="remember">
+</div>
 
-                    <label>
+<!--==========================
+Terms
+===========================-->
 
-                        <input
-                            type="checkbox"
-                            id="terms">
+<div class="remember">
 
-                        I agree to Terms & Conditions
+<label for="terms">
 
-                    </label>
+<input
+type="checkbox"
+id="terms"
+name="terms">
 
-                </div>
+I agree to Terms & Conditions
 
-                <span class="error" id="termsError"></span>
+</label>
 
-                <!-- Button -->
+</div>
 
-                <button type="submit">
+<span class="error" id="termsError"></span>
 
-                    <i class="fa-solid fa-user-plus"></i>
+<!--==========================
+Button
+===========================-->
 
-                    Register
+<button type="submit">
 
-                </button>
+<i class="fa-solid fa-user-plus"></i>
 
-                <div class="register">
+Register
 
-                    Already have an account?
+</button>
 
-                    <a href="login.html">Login</a>
+<div class="register">
 
-                </div>
+Already have an account?
 
-            </form>
+<a href="login.html">Login</a>
 
-        </div>
+</div>
 
-    </div>
+</form>
 
-    <script src="js/register.js"></script>
+</div>
+
+</div>
+
+<script src="js/register.js"></script>
 
 </body>
 
