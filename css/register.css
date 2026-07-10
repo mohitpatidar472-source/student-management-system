@@ -87,6 +87,10 @@ body::before{
     font-weight:600;
 }
 
+label.lable-check {
+    margin: 0px !important;
+}
+
 .input{
     display:flex;
     align-items:center;
@@ -205,8 +209,9 @@ input:-webkit-autofill:focus{
     .row{
         gap:15px;
     }
-
+ 
 }
+
 
 @media (max-width:768px){
 
@@ -274,8 +279,18 @@ input:-webkit-autofill:focus{
         padding:13px;
         font-size:15px;
     }
+    
 
 }
+
+/*==============================
+Mobile Responsive checkbox margin
+==============================*/
+
+   label.lable-check {
+    margin: 0px;
+       }
+
 
 
 /*==============================
@@ -284,7 +299,7 @@ Error Message
 
 .error{
 
-    display:block;
+    /* display:block; */
 
     color:#ff4d4d;
 
@@ -295,6 +310,8 @@ Error Message
     font-weight:500;
 
 }
+
+
 
 /*==============================
 Input Error
@@ -307,7 +324,7 @@ Input Error
 
 
 .input{
-
+    cursor: text;
     transition:.3s;
 
 }
@@ -331,3 +348,13 @@ Input Focus
     box-shadow:0 0 12px rgba(46,168,255,.4);
 
 }
+
+
+
+
+
+
+
+
+
+

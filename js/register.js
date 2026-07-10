@@ -1,4 +1,8 @@
-const form = document.getElementById("registerForm");
+const Registration = document.getElementById("registerForm");
+
+let isSubmitted = false;
+
+
 
 const name = document.getElementById("name");
 const email = document.getElementById("email");
@@ -87,11 +91,11 @@ function validateEmail() {
 
 function validateMobile() {
 
-    
+
 
     const mobilePattern = /^[6-9]\d{9}$/;
 
-    
+
     if (mobile.value.trim() === "") {
 
         mobileError.innerHTML = "Mobile Number is required";
@@ -105,42 +109,264 @@ function validateMobile() {
         return false;
 
     }
-mobileError.innerHTML = "";
+    mobileError.innerHTML = "";
     mobile.parentElement.classList.remove("error");
     return true;
 }
+
+//=============================
+// Course Validation
+//=============================
+
+function validateCourse() {
+
+    if (course.value.trim() === "") {
+        courseError.innerHTML = "Select course!";
+        course.parentElement.classList.add("error");
+        return false;
+    }
+
+    courseError.innerHTML = "";
+    course.parentElement.classList.remove("error");
+    return true;
+}
+
+
+
+//=============================
+// Password Validation
+//=============================
+
+function validatePassword() {
+    const passwordPattern = /^[^\s]{5,30}$/;
+
+    if (password.value.trim() === "") {
+        passwordError.innerHTML = "Password is required";
+        password.parentElement.classList.add("error");
+        return false;
+    } else if (!passwordPattern.test(password.value)) {
+        passwordError.innerHTML = "Password must be 5  characters and cannot contain spaces.";
+        password.parentElement.classList.add("error");
+        return false;
+    }
+
+    passwordError.innerHTML = "";
+    password.parentElement.classList.remove("error");
+    return true;
+}
+
+//=============================
+// Password Show Hide Function
+//=============================
+
+const showHide = document.getElementById("passwordshow");
+
+showHide.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (password.type === "password") {
+        password.type = "text";
+        showHide.classList.remove("fa-eye");
+        showHide.classList.add("fa-eye-slash");
+    } else {
+        password.type = "password";
+        showHide.classList.remove("fa-eye-slash");
+        showHide.classList.add("fa-eye");
+    }
+
+});
+
+
+
+//=============================
+// Comefirm Password Validation
+//=============================
+
+function validateConfirmPassword() {
+
+    if (confirmPassword.value.trim() === "") {
+
+        confirmError.innerHTML = "Confirm Password is required";
+        confirmPassword.parentElement.classList.add("error");
+        return false;
+
+    }
+    else if (password.value.trim() !== confirmPassword.value.trim()) {
+
+        confirmError.innerHTML = "Passwords do not match";
+        confirmPassword.parentElement.classList.add("error");
+        return false;
+
+    }
+
+    confirmError.innerHTML = "";
+    confirmPassword.parentElement.classList.remove("error");
+    return true;
+}
+
+//=============================
+// Confirm Password Show Hide Function
+//=============================
+
+const comfirmpasswordshow = document.getElementById('comfirmpasswordshow');
+comfirmpasswordshow.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (confirmPassword.type === "password") {
+        confirmPassword.type = "text";
+        comfirmpasswordshow.classList.remove("fa-eye");
+        comfirmpasswordshow.classList.add("fa-eye-slash");
+    } else {
+        confirmPassword.type = "password";
+        comfirmpasswordshow.classList.remove("fa-eye-slash");
+        comfirmpasswordshow.classList.add("fa-eye");
+    }
+
+
+})
+
+
+
+//=============================
+//  Photo Upload  Validation
+//=============================
+
+
+function validateImage() {
+
+    if (image.files.length === 0) {
+        imageError.innerHTML = "Image is required!";
+        image.parentElement.classList.add("error");
+        return false;
+    }
+
+    imageError.innerHTML = "";
+    image.parentElement.classList.remove("error");
+    return true
+
+}
+
+
+//=============================
+//  trems check  Validation
+//=============================
+
+
+function validateTerms() {
+
+    if (!terms.checked) {
+
+        termsError.innerHTML = "Please accept the Terms & Conditions!";
+        terms.classList.add("error");
+        return false;
+
+    }
+
+    termsError.innerHTML = "";
+    terms.classList.remove("error");
+    return true;
+
+}
+
+
 
 
 //=============================
 // Real Time Validation
 //=============================
 
-name.addEventListener("input", validateName);
-email.addEventListener("input", validateEmail);
-mobile.addEventListener("input", validateMobile);
+name.addEventListener("change", () => {
+
+    if (isSubmitted) {
+        validateName();
+    }
+
+});
+
+
+email.addEventListener("change", () => {
+    if (isSubmitted) {
+        validateEmail();
+    }
+})
+
+
+mobile.addEventListener("input", () => {
+    if (isSubmitted) {
+        validateMobile();
+    }
+});
+
+
+course.addEventListener("input", () => {
+    if (isSubmitted) {
+        validateCourse();
+    }
+});
+
+
+password.addEventListener("change", () => {
+    if (isSubmitted) {
+        validatePassword();
+    }
+});
+
+
+confirmPassword.addEventListener("change", () => {
+
+    if (isSubmitted) {
+        validateConfirmPassword();
+    }
+});
+
+image.addEventListener("input", () => {
+    if (isSubmitted) {
+        validateImage();
+    }
+});
+
+
+
+terms.addEventListener("change", function () {
+    if (isSubmitted) {
+        validateTerms();
+    }
+});
+
+
+
+
 
 //=============================
 // Form Submit
 //=============================
-
-form.addEventListener("submit", function (e) {
+Registration.addEventListener("submit", function (e) {
 
     e.preventDefault();
+
+    isSubmitted = true;
 
     let valid = true;
 
     valid = validateName() && valid;
     valid = validateEmail() && valid;
     valid = validateMobile() && valid;
+    valid = validateCourse() && valid;
+    valid = validatePassword() && valid;
+    valid = validateConfirmPassword() && valid;
+    valid = validateImage() && valid;
+    valid = validateTerms() && valid;
 
     if (valid) {
-
         alert("Registration Successful");
-
         window.location.href = "login.html";
-
     }
 
 });
 
 
+document.querySelectorAll(".input").forEach(box => {
+
+    box.addEventListener("click", () => {
+        box.querySelector("input").focus();
+    });
+
+});
