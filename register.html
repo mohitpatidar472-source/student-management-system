@@ -2,236 +2,202 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Student Management System | Register</title>
 
     <link rel="stylesheet" href="css/register.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
 </head>
 
 <body>
 
     <div class="container">
-
         <div class="register-card">
 
             <div class="logo">
-                <img src="image/download (4).jpg" class="logo-form" alt="Logo">
+                <img src="image/download (4).jpg" alt="Logo" class="logo-form">
             </div>
 
             <h2>Create Account</h2>
-
             <p>Student Management System</p>
 
-            <form id="registerForm" action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+            <form id="registerForm" action="php/register.php" method="POST" enctype="multipart/form-data"
+                autocomplete="off">
 
-                <!--==========================
-Name & Email
-===========================-->
+                <!-- ==========================
+                     Name & Email
+                =========================== -->
 
                 <div class="row">
 
                     <div class="input-box">
-
                         <label for="name">Full Name</label>
 
                         <div class="input">
-
                             <i class="fa-solid fa-user"></i>
-
-                            <input type="text" id="name" name="name" placeholder="Enter Full Name" autocomplete="off">
-
+                            <input type="text" id="name" name="name" placeholder="Enter Full Name">
                         </div>
 
                         <span class="error" id="nameError"></span>
-
                     </div>
 
                     <div class="input-box">
-
                         <label for="email">Email Address</label>
 
                         <div class="input">
-
                             <i class="fa-solid fa-envelope"></i>
-
-                            <input type="email" id="email" name="email" placeholder="Enter Email" autocomplete="off">
-
+                            <input type="email" id="email" name="email" placeholder="Enter Email">
                         </div>
 
                         <span class="error" id="emailError"></span>
-
                     </div>
 
                 </div>
 
-                <!--==========================
-Mobile & Course
-===========================-->
+                <!-- ==========================
+                     Mobile & Course
+                =========================== -->
 
                 <div class="row">
 
                     <div class="input-box">
-
                         <label for="mobile">Mobile Number</label>
 
                         <div class="input">
-
                             <i class="fa-solid fa-phone"></i>
 
-                            <input type="text" id="mobile" name="mobile" maxlength="10"
-                                placeholder="Enter Mobile Number" autocomplete="off">
-
+                            <input type="text"
+                                id="mobile"
+                                name="mobile"
+                                maxlength="10"
+                                placeholder="Enter Mobile Number">
                         </div>
 
                         <span class="error" id="mobileError"></span>
-
                     </div>
 
                     <div class="input-box">
-
                         <label for="course">Course</label>
 
                         <div class="input">
-
                             <i class="fa-solid fa-graduation-cap"></i>
 
                             <select id="course" name="course">
-
                                 <option value="">Select Course</option>
-
                                 <option value="BCA">BCA</option>
-
                                 <option value="BBA">BBA</option>
-
                                 <option value="B.Com">B.Com</option>
-
                                 <option value="B.Sc">B.Sc</option>
-
                             </select>
-
                         </div>
 
                         <span class="error" id="courseError"></span>
-
                     </div>
 
                 </div>
 
-<!--==========================
-Password
-===========================-->
+                <!-- ==========================
+                     Password
+                =========================== -->
 
                 <div class="row">
 
                     <div class="input-box">
-
                         <label for="password">Password</label>
 
                         <div class="input">
-
                             <i class="fa-solid fa-lock"></i>
 
-                            <input type="password" id="password" name="password" placeholder="Enter Password"
+                            <input type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter Password"
                                 autocomplete="new-password">
 
                             <i id="passwordshow" class="fa-solid fa-eye eye"></i>
-
                         </div>
 
                         <span class="error" id="passwordError"></span>
-
                     </div>
 
                     <div class="input-box">
-
                         <label for="confirmPassword">Confirm Password</label>
 
                         <div class="input">
-
                             <i class="fa-solid fa-lock"></i>
 
-                            <input type="password" id="confirmPassword" name="confirm_password"
-                                placeholder="Confirm Password" autocomplete="new-password">
+                            <input type="password"
+                                id="confirmPassword"
+                                name="confirm_password"
+                                placeholder="Confirm Password"
+                                autocomplete="new-password">
 
                             <i id="comfirmpasswordshow" class="fa-solid fa-eye eye"></i>
-
                         </div>
 
                         <span class="error" id="confirmError"></span>
-
                     </div>
 
                 </div>
 
-                <!--==========================
-Profile Image
-===========================-->
+                <!-- ==========================
+                     Profile Image
+                =========================== -->
 
                 <div class="input-box">
 
                     <label for="image">Profile Photo</label>
 
                     <div class="input">
-
                         <i class="fa-solid fa-image"></i>
 
-                        <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png">
-
+                        <input type="file"
+                            id="image"
+                            name="image"
+                            accept=".jpg,.jpeg,.png">
                     </div>
 
                     <span class="error" id="imageError"></span>
 
                 </div>
 
-                <!--==========================
-Terms
-===========================-->
+                <!-- ==========================
+                     Terms & Conditions
+                =========================== -->
+
                 <div class="input-box">
 
-                <div class="remember-me">
+                    <div class="remember-me">
 
-                    <label for="terms" class="lable-check">
+                        <label for="terms" class="lable-check">
+                            <input type="checkbox" id="terms" name="terms">
+                            I agree to Terms & Conditions
+                        </label>
 
-                        <input type="checkbox" id="terms" name="terms">
+                    </div>
 
-                        I agree to Terms & Conditions
-
-                    </label>
+                    <span class="error" id="termsError"></span>
 
                 </div>
 
-                <span class="error" id="termsError"></span>
-</div>
-                <!--==========================
-Button
-===========================-->
+                <!-- ==========================
+                     Submit Button
+                =========================== -->
 
                 <button type="submit">
-
                     <i class="fa-solid fa-user-plus"></i>
-
                     Register
-
                 </button>
 
                 <div class="register">
-
                     Already have an account?
-
                     <a href="login.html">Login</a>
-
                 </div>
 
             </form>
 
         </div>
-
     </div>
 
     <script src="js/register.js"></script>

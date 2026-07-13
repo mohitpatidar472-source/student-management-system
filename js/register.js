@@ -1,3 +1,7 @@
+
+
+
+
 const Registration = document.getElementById("registerForm");
 
 let isSubmitted = false;
@@ -356,17 +360,24 @@ Registration.addEventListener("submit", function (e) {
     valid = validateTerms() && valid;
 
     if (valid) {
-        alert("Registration Successful");
-        window.location.href = "login.html";
+
+        const formData = new FormData(Registration);
+
+        fetch("php/register.php", {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.text())
+            .then(data => {
+
+                if (data.trim() === "success") {
+                    alert("Registration Successful");
+                    window.location.href = "login.html";
+                } else {
+                    alert(data);
+                }
+            });
+
     }
 
-});
-
-
-document.querySelectorAll(".input").forEach(box => {
-
-    box.addEventListener("click", () => {
-        box.querySelector("input").focus();
     });
-
-});

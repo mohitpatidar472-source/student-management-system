@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,104 +11,92 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="login-card">
+        <div class="login-card">
 
-        <div class="logo">
-            <img src="image/download (4).jpg" alt="Logo" class="logo-form">
-        </div>
+            <div class="logo">
+                <img src="image/download (4).jpg" alt="Logo" class="logo-form">
+            </div>
 
-        <h2>Student Management System</h2>
+            <h2>Student Management System</h2>
 
-        <p>Welcome Back! Login to Continue</p>
+            <p>Welcome Back! Login to Continue</p>
 
-        <form action="php/login.php" method="POST">
+            <form action="php/login.php" id="loginForm" method="POST">
 
-            <div class="input-box">
+                <div class="input-box">
 
-                <label>Email Address</label>
+                    <label>Email Address</label>
 
-                <div class="input">
+                    <div class="input">
 
-                    <i class="fa-solid fa-envelope"></i>
+                        <i class="fa-solid fa-envelope"></i>
 
-                    <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Enter Email"
-                                        autocomplete="off"
+                        <input type="email" name="email" id="email" placeholder="Enter Email" >
 
-                    required>
+                    </div>
+                    <span class="error" id="emailError"></span>
+
 
                 </div>
 
-                <small id="emailError"></small>
+                <div class="input-box">
 
-            </div>
+                    <label>Password</label>
 
-            <div class="input-box">
+                    <div class="input">
 
-                <label>Password</label>
+                        <i class="fa-solid fa-lock"></i>
 
-                <div class="input">
+                        <input type="password" name="password" id="password" placeholder="Enter Password"
+                            autocomplete="new-password">
 
-                    <i class="fa-solid fa-lock"></i>
+                        <i class="fa-solid fa-eye" id="eye"></i>
 
-                    <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Enter Password"
-                    autocomplete="new-password"
-                    required>
+                    </div>
+                    <span class="error" id="passwordError"></span>
 
-                    <i class="fa-solid fa-eye" id="eye"></i>
 
                 </div>
 
-                <small id="passwordError"></small>
+                <div class="remember">
+
+                    <label>
+                        <input type="checkbox">
+                        Remember Me
+                    </label>
+
+                    <a href="forgot-password.php">Forgot Password?</a>
+
+                </div>
+
+                <button type="submit">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Login
+                </button>
+
+            </form>
+
+            <div class="register">
+
+                Don't have an account?
+
+                <a href="register.html">Register</a>
 
             </div>
-
-            <div class="remember">
-
-                <label>
-                    <input type="checkbox">
-                    Remember Me
-                </label>
-
-                <a href="forgot-password.php">Forgot Password?</a>
-
-            </div>
-
-            <button type="submit">
-                <i class="fa-solid fa-right-to-bracket"></i>
-                Login
-            </button>
-
-        </form>
-
-        <div class="register">
-
-            Don't have an account?
-
-            <a href="register.html">Register</a>
 
         </div>
 
     </div>
 
-</div>
-
-<script src="js/login.js"></script>
+    <script src="js/login.js"></script>
 
 </body>
+
 </html>
