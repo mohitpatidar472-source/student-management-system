@@ -14,6 +14,8 @@ const mobile = document.getElementById("mobile");
 const course = document.getElementById("course");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
+const city = document.getElementById('city');
+const duration = document.getElementById('duration');
 const image = document.getElementById("image");
 const terms = document.getElementById("terms");
 
@@ -23,6 +25,8 @@ const mobileError = document.getElementById("mobileError");
 const courseError = document.getElementById("courseError");
 const passwordError = document.getElementById("passwordError");
 const confirmError = document.getElementById("confirmError");
+const cityError  = document.getElementById('cityError');
+const durationError  = document.getElementById('durationError')
 const imageError = document.getElementById("imageError");
 const termsError = document.getElementById("termsError");
 
@@ -229,6 +233,61 @@ comfirmpasswordshow.addEventListener('click', (e) => {
 
 
 
+
+//=============================
+//  Session Year  Validation
+//=============================
+
+function validateDuration(){
+    const durationPattern = /^\d{4}\s*-\s*\d{4}$/;
+    const value = duration.value.trim();
+
+if(value === ""){
+    durationError.textContent = "Academic session is required";
+    duration.parentElement.classList.add('error');
+    return false;
+}else if(!durationPattern.test(value)){
+    durationError.textContent = "Format: 2025 - 2028";
+    duration.parentElement.classList.add('error');
+    return false;
+}
+
+durationError.textContent = "";
+duration.parentElement.classList.remove("error");
+return true;
+
+
+}
+
+
+
+//=============================
+//  City  Validation
+//=============================
+function validateCity() {
+    const cityPattern = /^[A-Za-z\s]{2,50}$/;
+
+    if (city.value.trim() === "") {
+
+        cityError.textContent = "Required City Name!";
+        city.parentElement.classList.add("error");
+        return false;
+
+    } else if (!cityPattern.test(city.value.trim())) {
+
+        cityError.textContent = "Enter valid city name";
+        city.parentElement.classList.add("error");
+        return false;
+
+    }
+
+    cityError.textContent = "";
+    city.parentElement.classList.remove("error");
+    return true;
+}
+
+
+
 //=============================
 //  Photo Upload  Validation
 //=============================
@@ -321,6 +380,19 @@ confirmPassword.addEventListener("change", () => {
     }
 });
 
+city.addEventListener("change", () =>{
+    if(isSubmitted){
+        validateCity();
+    }
+})
+
+
+duration.addEventListener("change", () =>{
+    if(isSubmitted){
+        validateDuration();
+    }
+})
+
 image.addEventListener("input", () => {
     if (isSubmitted) {
         validateImage();
@@ -356,6 +428,8 @@ Registration.addEventListener("submit", function (e) {
     valid = validateCourse() && valid;
     valid = validatePassword() && valid;
     valid = validateConfirmPassword() && valid;
+    valid = validateCity() && valid;
+    valid = validateDuration() && valid;
     valid = validateImage() && valid;
     valid = validateTerms() && valid;
 
@@ -381,3 +455,27 @@ Registration.addEventListener("submit", function (e) {
     }
 
     });
+
+
+// const divs = document.querySelectorAll(".input");
+
+// divs.forEach((div) => {
+//     const input = div.querySelector("input");
+
+//     div.addEventListener("click", function () {
+//         input.focus();
+//     });
+// });
+
+
+document.querySelectorAll(".input").forEach(box => {
+
+    const field = box.querySelector("input, select");
+
+    box.addEventListener("click", () => {
+        if (field) {
+            field.focus();
+        }
+    });
+
+});

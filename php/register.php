@@ -12,11 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 // =============================
 // Get Form Data
 // =============================
-$name     = trim($_POST["name"]);
-$email    = trim($_POST["email"]);
-$mobile   = trim($_POST["mobile"]);
-$course   = trim($_POST["course"]);
+$name = trim($_POST["name"]);
+$email = trim($_POST["email"]);
+$mobile = trim($_POST["mobile"]);
+$course = trim($_POST["course"]);
 $password = trim($_POST["password"]);
+$city = trim($_POST["city"]);
+$duration = trim($_POST["duration"]);
 
 // =============================
 // Server Side Validation
@@ -26,7 +28,9 @@ if (
     empty($email) ||
     empty($mobile) ||
     empty($course) ||
-    empty($password)
+    empty($password) ||
+    empty($city) ||
+    empty($duration)
 ) {
     exit("All fields are required.");
 }
@@ -83,17 +87,19 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
 // =============================
 $stmt = $conn->prepare("
 INSERT INTO student
-(name, email, mobile, course, password, image)
-VALUES (?, ?, ?, ?, ?, ?)
+(name, email, mobile, course, password,city,duration, image)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 ");
 
 $stmt->bind_param(
-    "ssssss",
+    "ssssssss",
     $name,
     $email,
     $mobile,
     $course,
     $hashedPassword,
+    $city,
+    $duration,
     $imageName
 );
 
@@ -110,4 +116,4 @@ $stmt->close();
 $check->close();
 $conn->close();
 
-?>  
+?>

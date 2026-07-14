@@ -1,8 +1,8 @@
 <?php
-include  "db.php";
+include "db.php";
 session_start();
 
-if($_SERVER['REQUEST_METHOD'] != "POST"){
+if ($_SERVER['REQUEST_METHOD'] != "POST") {
     exit("invalid request");
 }
 
@@ -14,8 +14,8 @@ if (empty($email) || empty($password)) {
 }
 
 $stmt = $conn->prepare("SELECT * FROM student WHERE email = ?");
-$stmt->bind_param("s",$email);
-$stmt-> ();
+$stmt->bind_param("s", $email);
+$stmt->execute();
 
 $result = $stmt->get_result();
 
@@ -24,25 +24,32 @@ if ($result->num_rows == 1) {
 
     $row = $result->fetch_assoc();
 
+    if (password_verify($password, $row["Password"])) {
 
-    if (password_verify($password, $row["password"])) {
+        $_SESSION["login"] = true;
 
-       $_SESSION["id"] = $row["Id"];
-$_SESSION["name"] = $row["Name"];
-$_SESSION["email"] = $row["Email"];
+        $_SESSION["id"] = $row["Id"];
+        $_SESSION["name"] = $row["Name"];
+        $_SESSION["email"] = $row["Email"];
+        $_SESSION["mobile"] = $row["Mobile"];
+        $_SESSION["course"] = $row["Course"];
+        $_SESSION['city'] = $row['City'];
+        $_SESSION['duration'] = $row['Duration'];
+        $_SESSION["image"] = $row["Image"];
 
         echo "success";
 
     } else {
 
         echo "Wrong password";
+
     }
 
 } else {
 
     echo "Email not found";
-}   
 
+}
 $stmt->close();
 $conn->close();
 

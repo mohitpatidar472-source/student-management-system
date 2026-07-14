@@ -54,7 +54,9 @@ body::before{
     width:90px;
     height:90px;
     border-radius:50%;
-    background:#fff;
+    /* background:#fff;*/
+        background:#00e7ff;
+
     padding:6px;
     object-fit:cover;
 }

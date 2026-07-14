@@ -1,13 +1,17 @@
-document.querySelectorAll(".input").forEach(box => {
+// =============================
+// Focus Input on Container Click
+// =============================
+document.querySelectorAll(".input").forEach((box) => {
+    const input = box.querySelector("input");
 
-    box.addEventListener("click", () => {
-        box.querySelector("input").focus();
-    });
-
+    if (input) {
+        box.addEventListener("click", () => input.focus());
+    }
 });
 
-
-
+// =============================
+// Elements
+// =============================
 const loginForm = document.getElementById("loginForm");
 
 const email = document.getElementById("email");
@@ -18,165 +22,141 @@ const passwordError = document.getElementById("passwordError");
 
 let isSubmitted = false;
 
-//=============================
-// Email Validation
-//=============================
+// =============================
+// Clear Errors
+// =============================
 
+function clearErrors() {
+    emailError.textContent = "";
+    passwordError.textContent = "";
+
+    email.parentElement.classList.remove("error");
+    password.parentElement.classList.remove("error");
+}
+
+// =============================
+// Validation
+// =============================
 function validateEmail() {
 
+    const value = email.value.trim();
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (email.value.trim() == "") {
-
-        emailError.innerHTML = "Email is required";
-        email.parentElement.classList.add('error')
+    if (!value) {
+        emailError.textContent = "Email is required";
+        email.parentElement.classList.add("error");
         return false;
-
     }
 
-    if (!pattern.test(email.value.trim())) {
-
-        emailError.innerHTML = "Enter valid email";
-        email.parentElement.classList.add('error')
-
+    if (!pattern.test(value)) {
+        emailError.textContent = "Enter valid email";
+        email.parentElement.classList.add("error");
         return false;
-
     }
 
-    emailError.innerHTML = "";
-    email.parentElement.classList.remove('error');
-
+    emailError.textContent = "";
+    email.parentElement.classList.remove("error");
     return true;
 }
 
-//=============================
-// Password Validation
-//=============================
 function validatePassword() {
 
-    if (password.value.trim() == "") {
-
-        passwordError.innerHTML = "Password is required";
+    if (!password.value.trim()) {
+        passwordError.textContent = "Password is required";
         password.parentElement.classList.add("error");
         return false;
-
     }
 
-    passwordError.innerHTML = "";
+    passwordError.textContent = "";
     password.parentElement.classList.remove("error");
-
     return true;
 }
-//=============================
+
+// =============================
 // Real Time Validation
-//=============================
-
+// =============================
 email.addEventListener("input", () => {
-
-    if (isSubmitted) {
-
-        validateEmail();
-
-    }
-
+    if (isSubmitted) validateEmail();
 });
 
 password.addEventListener("input", () => {
-
-    if (isSubmitted) {
-
-        validatePassword();
-
-    }
-
+    if (isSubmitted) validatePassword();
 });
 
-//=============================
-// Login Submit
-//=============================
-
-loginForm.addEventListener("submit", function (e) {
+// =============================
+// Form Submit
+// =============================
+loginForm.addEventListener("submit", (e) => {
 
     e.preventDefault();
 
     isSubmitted = true;
 
-    let valid = true;
+    clearErrors();
 
-    valid = validateEmail() && valid;
-    valid = validatePassword() && valid;
+    const emailValid = validateEmail();
+    const passwordValid = validatePassword();
 
-    if (valid) {
+    if (!emailValid || !passwordValid) {
+        return;
+    }
 
-        const formData = new FormData(loginForm);
+    fetch("php/login.php", {
+        method: "POST",
+        body: new FormData(loginForm)
+    })
+        .then(response => response.text())
+        .then(data => {
 
-        fetch("php/login.php", {
+            data = data.trim();
 
-            method: "POST",
-            body: formData
+            clearErrors();
+
+            switch (data) {
+
+                case "success":
+                    window.location.href = "php/dashboard.php";
+                    break;
+
+                case "Email not found":
+                    emailError.textContent = data;
+                    email.parentElement.classList.add("error");
+                    break;
+
+                case "Wrong password":
+                    passwordError.textContent = data;
+                    password.parentElement.classList.add("error");
+                    break;
+
+                default:
+                    console.error(data);
+                    passwordError.textContent = "Something went wrong.";
+            }
 
         })
-            .then(response => response.text())
-            .then(data => {
-
-                data = data.trim();
-
-                if (data === "success") {
-
-                    window.location.href = "dashboard.php";
-
-                }
-
-                else if (data === "Email not found") {
-
-                    emailError.innerHTML = data;
-                    email.parentElement.classList.add("error");
-
-                    passwordError.innerHTML = "";
-                    password.parentElement.classList.remove("error");
-
-                }
-
-                else if (data === "Wrong password") {
-
-                    passwordError.innerHTML = data;
-                    password.parentElement.classList.add("error");
-
-                    emailError.innerHTML = "";
-                    email.parentElement.classList.remove("error");
-
-                }
-
-                else {
-
-                    alert(data);
-
-                }
-
-            })
-
-    }
+        .catch(error => {
+            console.error(error);
+            passwordError.textContent = "Server error. Please try again.";
+        });
 
 });
 
-//=============================
+// =============================
 // Show / Hide Password
-//=============================
-
+// =============================
 const eye = document.getElementById("eye");
 
-eye.addEventListener("click", () => {
+if (eye) {
 
-    if (password.type === "password") {
+    eye.addEventListener("click", () => {
 
-        password.type = "text";
-        eye.classList.replace("fa-eye", "fa-eye-slash");
+        const show = password.type === "password";
 
-    } else {
+        password.type = show ? "text" : "password";
 
-        password.type = "password";
-        eye.classList.replace("fa-eye-slash", "fa-eye");
+        eye.classList.toggle("fa-eye");
+        eye.classList.toggle("fa-eye-slash");
 
-    }
+    });
 
-});
+}
