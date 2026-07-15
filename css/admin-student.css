@@ -1,0 +1,168 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    padding:30px;
+}
+
+.table-container{
+    width:100%;
+    overflow-x:auto;
+}
+
+.back-to-das {
+    font-size: 22px;
+    background-color: #547070;
+    width: fit-content;
+    padding: 8px 22px;
+    margin-bottom: 10px;
+        border-radius: 10px;
+}
+
+a.back {
+    color: white;
+}
+
+.student-table{
+    width:100%;
+    min-width:1100px;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.student-table thead{
+    background:#2563eb;
+}
+
+.student-table th{
+    color:#fff;
+    padding:16px 18px;
+    font-size:16px;
+    font-weight:600;
+    text-align:center;
+}
+
+.student-record {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.student-table td{
+    padding:16px;
+    font-size:15px;
+    color:#374151;
+    text-align:center;
+    border-bottom:1px solid #ececec;
+}
+
+.student-table tbody tr:nth-child(even){
+    background:#fafafa;
+}
+
+/* .student-table tbody:hover{
+    background:#eef5ff;
+    transition:.3s;
+} */
+
+tr.column-css {
+    background-color: #00a1ff;
+}
+
+.student-table tbody tr:last-child td{
+    border-bottom:none;
+}
+
+.student-img{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:cover;
+    /* border:3px solid #2563eb; */
+}
+
+.update-btn,
+.delete-btn{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:6px;
+    text-decoration:none;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.update-btn{
+    background:#2563eb;
+    margin-right:8px;
+}
+
+.update-btn:hover{
+    background:#1d4ed8;
+}
+
+.delete-btn{
+    background:#dc2626;
+}
+
+.delete-btn:hover{
+    background:#b91c1c;
+}
+
+.table-title{
+    text-align:center;
+    font-size:32px;
+    color:#1e3a8a;
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+@media(max-width:992px){
+
+    body{
+        padding:15px;
+    }
+
+    .student-table{
+        min-width:950px;
+    }
+
+}
+
+@media(max-width:576px){
+
+    body{
+        padding:10px;
+    }
+
+    .table-title{
+        font-size:24px;
+    }
+
+    .student-table th,
+    .student-table td{
+        padding:12px;
+        font-size:14px;
+    }
+
+    .student-img{
+        width:45px;
+        height:45px;
+    }
+
+    .update-btn,
+    .delete-btn{
+        font-size:12px;
+        padding:7px 10px;
+    }
+
+}

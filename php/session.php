@@ -2,12 +2,6 @@
 session_start();
 
 if (!isset($_SESSION["login"])) {
-    header("Location: login.html");
-    exit;
+    header("Location: /StudentManagement/login.html");
+    exit();
 }
-
-
-
-
-
-?>

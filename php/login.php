@@ -13,6 +13,44 @@ if (empty($email) || empty($password)) {
     exit("All fields are required");
 }
 
+
+
+$stmt = $conn->prepare('SELECT * FROM admin WHERE email = ?');
+$stmt->bind_param('s', $email);
+$stmt->execute();
+
+
+$result = $stmt->get_result();
+
+if($result->num_rows == 1){
+
+$admin = $result->fetch_assoc();
+
+if (password_verify($password, $admin['password'])) {
+
+    $_SESSION['admin_login'] = true;
+
+    $_SESSION['name'] = $admin['name'];
+    $_SESSION['email'] = $admin['email'];
+
+    echo "admin";
+    exit();
+
+} else {
+
+    echo "Wrong password";
+    exit();
+
+}
+}
+
+
+/* ==========================
+   Check Student Login
+========================== */
+
+
+
 $stmt = $conn->prepare("SELECT * FROM student WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
@@ -37,7 +75,7 @@ if ($result->num_rows == 1) {
         $_SESSION['duration'] = $row['Duration'];
         $_SESSION["image"] = $row["Image"];
 
-        echo "success";
+        echo "student";
 
     } else {
 

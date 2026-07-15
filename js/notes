@@ -1,1 +1,55 @@
- jese hhi user form submit kareha 
+admin/
+
+dashboard.php
+students.php
+update.php
+delete.php
+session.php
+logout.php
+
+
+
+Login
+│
+▼
+Admin Dashboard
+│
+├── Add Student
+│ │
+│ ▼
+│ register.html
+│
+├── Students
+│ │
+│ ▼
+│ students.php
+│
+└── Logout
+
+
+
+students.php
+
+---------------------------------------------------------------
+# Image Name Email Course City Action
+---------------------------------------------------------------
+
+1 👤 Mohit ....... BCA Indore ✏️Update 🗑Delete
+
+2 👤 Rahul ....... BBA Ujjain ✏️Update 🗑Delete
+
+3 👤 Aman ....... B.Sc Dewas ✏️Update 🗑Delete
+
+
+
+
+
+
+
+
+
+
+
+
+
+

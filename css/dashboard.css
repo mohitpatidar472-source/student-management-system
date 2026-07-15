@@ -5,6 +5,10 @@
     font-family:"Poppins",sans-serif;
 }
 
+.main-parent {
+    width: 100%;
+}
+
 body{
     background:linear-gradient(135deg,#eef2ff,#dbeafe);
     min-height:100vh;
@@ -27,6 +31,23 @@ body{
     border-radius:18px;
     padding:35px;
     box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+
+.btm {
+    text-align: end;
+    font-size: 20px;
+    text-transform: uppercase;
+    position: relative;
+    top: -29px;
+    left: 30px;
+}
+
+a.logout-btn {
+    text-decoration: none;
+    color: #0008ff;
+    /* background-color: black; */
+    padding: 5px;
+    border-radius: 8px;
 }
 
 .student-college{
@@ -68,6 +89,7 @@ body{
     padding:14px 0;
     /* border-bottom:1px solid #e5e7eb; */
 }
+
 
 .label{
     font-size:18px;

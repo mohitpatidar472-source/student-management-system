@@ -2,10 +2,10 @@
 // Focus Input on Container Click
 // =============================
 document.querySelectorAll(".input").forEach((box) => {
-    const input = box.querySelector("input");
+    const field = box.querySelector("input, select");
 
-    if (input) {
-        box.addEventListener("click", () => input.focus());
+    if (field) {
+        box.addEventListener("click", () => field.focus());
     }
 });
 
@@ -114,7 +114,11 @@ loginForm.addEventListener("submit", (e) => {
 
             switch (data) {
 
-                case "success":
+                case "admin":
+                    window.location.href = "admin/dashboard.php";
+                    break;
+
+                case "student":
                     window.location.href = "php/dashboard.php";
                     break;
 
@@ -129,17 +133,22 @@ loginForm.addEventListener("submit", (e) => {
                     break;
 
                 default:
-                    console.error(data);
-                    passwordError.textContent = "Something went wrong.";
+                    console.error("Unexpected Response:", data);
+                    passwordError.textContent = data;
             }
 
-        })
-        .catch(error => {
+        });
+           (error => {
             console.error(error);
             passwordError.textContent = "Server error. Please try again.";
         });
 
 });
+
+
+
+
+
 
 // =============================
 // Show / Hide Password
