@@ -1,49 +1,10 @@
-admin/
-
-dashboard.php
-students.php
-update.php
-delete.php
-session.php
-logout.php
 
 
+user forget password par click kar rha h to  page open hoga 
 
-Login
-│
-▼
-Admin Dashboard
-│
-├── Add Student
-│ │
-│ ▼
-│ register.html
-│
-├── Students
-│ │
-│ ▼
-│ students.php
-│
-└── Logout
+forgot-password.php
 
-
-
-students.php
-
----------------------------------------------------------------
-# Image Name Email Course City Action
----------------------------------------------------------------
-
-1 👤 Mohit ....... BCA Indore ✏️Update 🗑Delete
-
-2 👤 Rahul ....... BBA Ujjain ✏️Update 🗑Delete
-
-3 👤 Aman ....... B.Sc Dewas ✏️Update 🗑Delete
-
-
-
-
-
+esme meko aab asa karna h user email dale or new password dale or password change ho jaye 
 
 
 
